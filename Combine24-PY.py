@@ -1,7 +1,6 @@
 from ast import Pass
 import re
 import random
-from unittest import result
 enter=input("Enter 4 number and a sign")
 sign=enter[4]
 ele=[]
@@ -44,4 +43,3 @@ def plus():
                 solution=str(i)+"+"+str(j)+"="+str(i*j)
     print(enter_list)
 analyze()
-

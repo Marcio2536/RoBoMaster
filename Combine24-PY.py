@@ -20,11 +20,9 @@ def analyze():
     elif sign=="-":
         minus()
     elif sign=="*":
-        pass
-        #multi()
+        multi()
     else:
-        pass
-        #divid()
+        divid()
 
 def plus():
     plist=num_list

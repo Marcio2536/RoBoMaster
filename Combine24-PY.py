@@ -1,4 +1,3 @@
-from ast import Pass
 import re
 import random
 enter=input("Enter 4 number and a sign")

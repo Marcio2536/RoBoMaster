@@ -4,17 +4,36 @@ num_list=[]
 length=0
 solution=""
 result=0
+repeat=0
+select=""
+
+def decide(x,y):
+    z=0
+    select=str(x)+str(y)
+    z=len(select)
+    for i in range(z):
+        for j in range(z):
+            if i==j:
+                continue
+            if select[i]==select[j]:
+                return True
+            else:
+                return False
 
 def analyze():
     for i in range(4):
         num_list[i]=word[i]
+    for i in range(4):
+        now=num_list[i]
+        pre=num_list[i-1]
+        if pre==now:
+            repeat=now
+    for i in range(4):
         for j in range(4):
             num_list.append(str(num_list[i])+str(num_list[j]))
     length=len(num_list)
     for i in range(length):
         num_list[i]=int(num_list[i])
-    num_list=set(num_list)
-    num_list=list(num_list)
     num_list.sort(reverse=True)
     length=len(num_list)
     if sign=="+":
@@ -34,28 +53,35 @@ def plus():
     length=len(plist)
     for i in range(length):
         for j in range(length):
+            if (decide(plist[i],plist[j]))==True:
+                continue
             result=plist[i]+plist[j]
             if result==24:
                 solution=str(i)+"+"+str(j)+"="+str(i*j)
     print(solution)
 
 def minus():
-    mlist0=num_list
+    mlist0=[]
     mlist1=[]
     length0=len(mlist0)
     length1=0
+    for i in range(length):
+        if i>24:
+            mlist0[i]=num_list[i]
+        elif i<24:
+            mlist1[i]=num_list[i]
+        else:
+            mlist0[i]=mlist1[i]=num_list[i]
     mlist0.sort(reverse=True)
-    for i in range(length0):
-        if mlist0[i]<=24:
-            mlist1.append(mlist0[i])
-            del mlist0[i]
     length0=len(mlist0)
     length1=len(mlist1)
     for i in range(length0):
         for j in range(length1):
+            if (decide(mlist0[i],mlist1[j]))==True:
+                continue
             result=mlist0[i]-mlist1[j]
             if result==24:
-                solution=str(mlist0[i])+"-"+str(mlist1[j])
+                solution=str(mlist0[i])+"-"+str(mlist1[j])+"="+str(mlist0[i]*mlist1[j])
 
 def multi():
     mulist=[]

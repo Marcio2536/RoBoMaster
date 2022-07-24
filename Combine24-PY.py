@@ -1,6 +1,3 @@
-from ctypes.wintypes import WORD
-import random
-
 word=input("Input 4 number and a sign")
 sign=word[4]
 num_list=[]

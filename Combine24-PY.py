@@ -7,46 +7,6 @@ result=0
 repeat=0
 select=""
 
-def main():
-    analyze()
-    if sign=="+":
-        print(plus())
-    elif sign=="-":
-        print(minus())
-    elif sign=="*":
-        print(multi())
-    else:
-        print(divid())
-    
-def decide(v,w,x,y,z):
-    z=0
-    select=str(v)+str(w)
-    z=len(select)
-    for i in range(z):
-        for j in range(z):
-            if select[i]==select[j]:
-                return True
-            else:
-                return False
-
-def analyze():
-    global length
-    for i in range(4):
-        num_list.append(word[i])
-    for i in range(4):
-        now=num_list[i]
-        pre=num_list[i-1]
-        if pre==now:
-            repeat=now
-    for i in range(4):
-        for j in range(4):
-            num_list.append(str(num_list[i])+str(num_list[j]))
-    length=len(num_list)
-    for i in range(length):
-        num_list[i]=int(num_list[i])
-    num_list.sort(reverse=True)
-    length=len(num_list)
-
 def plus():
     global length
     plist=[]
@@ -72,8 +32,6 @@ def plus():
                         solution=str(plist[i])+"+"+str(plist[j])+"+"+str(plist[k])+str(plist[l])+"="+str(plist[i]+plist[j])
                         return solution
 
-    
-
 def minus():
     global length
     mlist0=[]
@@ -94,7 +52,7 @@ def minus():
     length1=len(mlist1)
     for i in range(length0):
         for j in range(length1):
-            if (decide(mlist0[i],mlist1[j]))==True:
+            if (analyze.decide(mlist0[i],mlist1[j]))==True:
                 continue
             result=mlist0[i]-mlist1[j]
             if result==24:
@@ -110,7 +68,7 @@ def multi():
     length=len(mulist)
     for i in range(length):
         for j in range(length):
-            if (decide(mulist[i],mulist[j])==True):
+            if (analyze.decide(mulist[i],mulist[j])==True):
                 continue
             print(mulist[i],mulist[j])
             result=mulist[i]*mulist[j]
@@ -132,11 +90,51 @@ def divid():
     length1=len(dlist1)
     for i in range(length0):
         for j in range(length1):
-            if (decide(dlist0[i],dlist1[j])==True):
+            if (analyze.decide(dlist0[i],dlist1[j])==True):
                 continue
             result=dlist0[i]/dlist1[j]
             if result==24:
                 solution=str(dlist0[i])+"/"+str(dlist1[j])+"="+(dlist0[i]+dlist1[j])
                 return solution
+
+def analyze(self):
+    global length
+    for i in range(4):
+        num_list.append(word[i])
+    for i in range(4):
+        now=num_list[i]
+        pre=num_list[i-1]
+        if pre==now:
+            repeat=now
+    for i in range(4):
+        for j in range(4):
+            num_list.append(str(num_list[i])+str(num_list[j]))
+    length=len(num_list)
+    for i in range(length):
+        num_list[i]=int(num_list[i])
+    num_list.sort(reverse=True)
+    length=len(num_list)
+    if sign=="+":
+        plus()
+    elif sign=="-":
+        minus()
+    elif sign=="*":
+        multi()
+    else:
+        divid()
+
+def decide(v,w,x,y,z):
+    z=0
+    select=str(v)+str(w)
+    z=len(select)
+    for i in range(z):
+        for j in range(z):
+            if select[i]==select[j]:
+                return True
+            else:
+                return False
+
+def main():
+    analyze()
 
 main()

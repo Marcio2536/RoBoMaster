@@ -33,8 +33,8 @@ def plus():
             plist[i]=num_list[i]
     length=len(plist)
     for i in range(length):
-        for j in range(length): #lengthalso there will be a repeati number problem, eg: 1789+ will output 17+7=24 which doesn't exist):
-            result=plist[i]+plist[j]#I agree; can you try to solve it? I am coding for minusing part
+        for j in range(length):
+            result=plist[i]+plist[j]
             if result==24:
                 solution=str(i)+"+"+str(j)+"="+str(i*j)
     print(solution)

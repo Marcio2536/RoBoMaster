@@ -15,6 +15,8 @@ def analyze():
         num_list[i]=int(num_list[i])
     num_list=set(num_list)
     num_list=list(num_list)
+    num_list.sort(reverse=True)
+    length=len(num_list)
     if sign=="+":
         plus()
     elif sign=="-":
@@ -25,15 +27,13 @@ def analyze():
         divid()
 
 def plus():
-    plist=num_list
-    length=len(plist)
-    plist.sort(reverse=True)
+    plist=[]
     for i in range(length):
-        if plist[i]>24:
-            del plist[i]
+        if num_list[i]>24:
+            plist[i]=num_list[i]
     length=len(plist)
-    for i in range(plist):
-        for j in range(plist): #lengthalso there will be a repeati number problem, eg: 1789+ will output 17+7=24 which doesn't exist):
+    for i in range(length):
+        for j in range(length): #lengthalso there will be a repeati number problem, eg: 1789+ will output 17+7=24 which doesn't exist):
             result=plist[i]+plist[j]#I agree; can you try to solve it? I am coding for minusing part
             if result==24:
                 solution=str(i)+"+"+str(j)+"="+str(i*j)

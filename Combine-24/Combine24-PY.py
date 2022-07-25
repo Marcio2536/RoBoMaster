@@ -1,7 +1,6 @@
 word=input("Input 4 number and a sign")
 sign=word[4]
 num_list=[]
-length=0
 solution=""
 result=0
 repeat=0
@@ -25,9 +24,12 @@ def decide(x,y,v=None,w=None):
     return False
 
 def plus():
+    global length,num_list
+    length=len(num_list)
     plist=[]
     print(num_list)
     for i in range(length):
+        print(i)
         if num_list[i]<=24:
             plist.append(num_list[i])
     print(plist)
@@ -81,6 +83,9 @@ def minus():
             for k in range(mlength1):
                 if (decide(mlist0[i],mlist1[j],mlist1[k])==True) or (k==(i or j)):
                     continue
+                result=mlist0[i]-mlist1[j]-mlist1[k]
+                if result==24:
+                    return result
 
 def multi():
     global length
@@ -121,6 +126,7 @@ def divid():
                 return solution
 
 def analyze():
+    num_list=[]
     global length
     for i in range(4):
         num_list.append(int(word[i]))
@@ -131,6 +137,7 @@ def analyze():
                 num_list[-1]=int(num_list[-1])
     num_list.sort(reverse=True)
     length=len(num_list)
+    print(num_list,length)
     if sign=="+":
         print(plus())
     elif sign=="-":

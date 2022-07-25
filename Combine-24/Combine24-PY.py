@@ -24,14 +24,14 @@ def decide(x,y,v=None,w=None):
     return False
 
 def plus():
-    global length,num_list
     length=len(num_list)
+    print(length)
     plist=[]
     print(num_list)
     for i in range(length):
         print(i)
-        if num_list[i]<=24:
-            plist.append(num_list[i])
+        
+        plist.append(num_list[i])
     print(plist)
     plength=len(plist)
     for i in range(plength):
@@ -39,8 +39,10 @@ def plus():
             if (decide(plist[i],plist[j])==True) or (i==j):
                 continue
             result=plist[i]+plist[j]
+            print(result)
             if result==24:
                 solution=str(plist[i])+"+"+str(plist[j])+"="+str(plist[i]+plist[j])
+                print(solution)
                 return solution
             for k in range(plength):
                 if (decide(plist[i],plist[j],plist[k])==True) or (k==(i or j)):
@@ -48,6 +50,7 @@ def plus():
                 result=plist[i]+plist[j]+plist[k]
                 if result==24:
                     solution=str(plist[i])+"+"+str(plist[j])+"+"+str(plist[k])+"="+str(plist[i]+plist[j]+plist[k])
+                    print(solution)
                     return solution
                 for l in range(plength):
                     if (decide(plist[i],plist[j],plist[k],plist[l])==True) or (l==(i or j or k)):
@@ -55,7 +58,9 @@ def plus():
                     result=plist[i]+plist[j]+plist[k]+plist[l]
                     if result==24:
                         solution=str(plist[i])+"+"+str(plist[j])+"+"+str(plist[k])+str(plist[l])+"="+str(plist[i]+plist[j]+plist[k]+plist[l])
+                        print(solution)
                         return solution
+                        
 
 def minus():
     mlist0=[]
@@ -139,7 +144,7 @@ def analyze():
     length=len(num_list)
     print(num_list,length)
     if sign=="+":
-        print(plus())
+        plus()
     elif sign=="-":
         print(minus())
     elif sign=="*":

@@ -7,10 +7,28 @@ result=0
 repeat=0
 select=""
 
+def decide(x,y,v=None,w=None):
+    z=0
+    if v==None and w==None:
+        select=str(x)+str(y)
+    elif w==None:
+        select=str(x)+str(y)+str(w)    
+    else:
+        select=str(x)+str(y)+str(w)+str(w)
+    z=len(select)
+    for i in range(z):
+        for j in range(z):
+            if i==j:
+                continue
+            if select[i]==select[j]:
+                return True
+    return False
+
 def plus():
     plist=[]
+    print(num_list)
     for i in range(length):
-        if num_list[i]<24:
+        if num_list[i]<=24:
             plist.append(num_list[i])
     print(plist)
     plength=len(plist)
@@ -38,11 +56,8 @@ def plus():
                         return solution
 
 def minus():
-    global length
     mlist0=[]
     mlist1=[]
-    length0=len(mlist0)
-    length1=0
     for i in range(length):
         if num_list[i]>24:
             mlist0.append(num_list[i])
@@ -53,16 +68,19 @@ def minus():
             mlist1.append(num_list[i])
     print(mlist0)
     print(mlist1)
-    length0=len(mlist0)
-    length1=len(mlist1)
-    for i in range(length0):
-        for j in range(length1):
-            if (analyze.decide(mlist0[i],mlist1[j]))==True:
+    mlength0=len(mlist0)
+    mlength1=len(mlist1)
+    for i in range(mlength0):
+        for j in range(mlength1):
+            if (decide(mlist0[i],mlist1[j])==True) or (i==j):
                 continue
             result=mlist0[i]-mlist1[j]
             if result==24:
                 solution=str(mlist0[i])+"-"+str(mlist1[j])+"="+str(mlist0[i]-mlist1[j])
                 return solution
+            for k in range(mlength1):
+                if (decide(mlist0[i],mlist1[j],mlist1[k])==True) or (k==(i or j)):
+                    continue
 
 def multi():
     global length
@@ -114,30 +132,15 @@ def analyze():
     num_list.sort(reverse=True)
     length=len(num_list)
     if sign=="+":
-        plus()
+        print(plus())
     elif sign=="-":
-        minus()
+        print(minus())
     elif sign=="*":
-        multi()
+        print(multi())
     else:
-        divid()
+        print(divid())
 
-def decide(x,y,v=None,w=None):
-    z=0
-    if v==None and w==None:
-        select=str(x)+str(y)
-    elif w==None:
-        select=str(x)+str(y)+str(w)    
-    else:
-        select=str(x)+str(y)+str(w)+str(w)
-    z=len(select)
-    for i in range(z):
-        for j in range(z):
-            if i==j:
-                continue
-            if select[i]==select[j]:
-                return True
-    return False
+
 
 def main():
     analyze()

@@ -2,6 +2,7 @@ command=""
 com_list=""
 varible=""
 action=""
+robo_var={"speed":10,"mode":"free"}
 print("Welcome To RoBoMaster Command Line")
 while True:
     command=input("RoBoMaster $")
@@ -20,6 +21,12 @@ while True:
                 pass
             elif varible=="local":
                 pass
+        elif command=="setspeed":
+            if type(varible)=="int" or type(varible)=="float":
+                robo_var["speed"]=varible
+                print("RoBo Speed Set")
+            else:
+                print("Error: Invalid Varible")
         else:
             print("Error: Unrecognised Command")
     elif len(com_list)==1:

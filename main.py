@@ -15,6 +15,11 @@ while True:
         elif action=="setpassword":
             password=varible
             print("Sucessfully Set Password")
+        elif command=="combine24":
+            if varible=="robo":
+                pass
+            elif varible=="local":
+                pass
         else:
             print("Error: Unrecognised Command")
     elif len(com_list)==1:

@@ -1,3 +1,4 @@
+import Robot_Control.Control
 command=""
 com_list=""
 varible=""
@@ -16,17 +17,20 @@ while True:
         elif action=="setpassword":
             password=varible
             print("Sucessfully Set Password")
-        elif command=="combine24":
+        elif action=="combine24":
             if varible=="robo":
                 pass
             elif varible=="local":
                 pass
-        elif command=="setspeed":
+        elif action=="setspeed":
             if type(varible)=="int" or type(varible)=="float":
                 robo_var["speed"]=varible
                 print("RoBo Speed Set")
             else:
                 print("Error: Invalid Varible")
+        elif action=="epconnect":
+            message=Control.connect(ssid,password)
+            print(message\)
         else:
             print("Error: Unrecognised Command")
     elif len(com_list)==1:

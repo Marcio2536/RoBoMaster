@@ -10,11 +10,12 @@ print("Welcome To RoBoMaster Command Line")
 
 while True:
     command=input("RoBoMaster $")
-    ind=command.index(" ")
-    ind+=1
     com_list=command.split()
+    if len(com_list)>1:
+        ind=command.index(" ")
+        ind+=1
+        variable=com_list[1]
     action=com_list[0]
-    variable=com_list[1]
     if action=="setssid":
         command=command+"\""
         ssid=command[ind:-1]

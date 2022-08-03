@@ -3,7 +3,9 @@ command=""
 com_list=""
 varible=""
 action=""
+error=["Invalid Variable","Unrecognised Command"]
 robo_var={"speed":10,"mode":"free"}
+
 print("Welcome To RoBoMaster Command Line")
 while True:
     command=input("RoBoMaster $")
@@ -27,17 +29,17 @@ while True:
                 robo_var["speed"]=varible
                 print("RoBo Speed Set")
             else:
-                print("Error: Invalid Varible")
+                print("Error:",error[0])
         elif action=="epconnect":
             message=control.connect(ssid,password)
             print(message)
         else:
-            print("Error: Unrecognised Command")
+            print("Error:",error[1])
     elif len(com_list)==1:
         if command=="setdefault":
             pass
         else:
-            print("Error: Unrecognised Command")
+            print("Error:",error[1])
     else:
-        print("Error: Unrecognised Command")
+        print("Error:",error[1])
             

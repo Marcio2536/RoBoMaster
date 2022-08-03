@@ -1,8 +1,9 @@
 import time
 import robomaster
-from robomaster import conn
+from robomaster import robot
 from MyQR import myqr
 from PIL import Image
+from robomaster import robot
 
 def connect(ssid,password):
     QRCODE_NAME = "qrcode.png"
@@ -16,3 +17,8 @@ def connect(ssid,password):
         return "Connected"
     else:
         return "Connect Failed"
+def __init__():
+    ep_robot=robomaster.robot.Robot()
+    ep_robot.initialize(conn_type="sta")
+    config.DEFAULT_CONN_TYPE = "sta"
+    config.DEFAULT_PROTO_TYPE = "tcp"

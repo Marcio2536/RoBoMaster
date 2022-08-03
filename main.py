@@ -1,11 +1,11 @@
-from more_itertools import strip
+import robomaster
 import Robot_Control.Control as control
 command=""
 com_list=""
 variable=""
 action=""
 error=["Invalid Variable","Unrecognised Command"]
-robo_var={"speed":10,"mode":"free"}
+robo_var={"speed":10,"mode":"free","connection":"tcp"}
 print("Welcome To RoBoMaster Command Line")
 
 while True:
@@ -34,9 +34,14 @@ while True:
             print("RoBo Speed Set")
         else:
             print("Error:",error[0])
+    elif action=="setip":
+        robomaster.config.LOCAL_IP_STR = variable
+        print("Set IP address as:",variable)
     elif action=="epconnect":
         message=control.connect(ssid,password)
         print(message)
+    elif action=="setconnect":
+        robo_var["connection"]==variable
     elif command=="setdefault":
         pass
     else:

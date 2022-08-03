@@ -18,9 +18,9 @@ while True:
             password=varible
             print("Sucessfully Set Password")
         elif action=="combine24":
-            if varible=="robo":
+            if varible=="r":
                 pass
-            elif varible=="local":
+            elif varible=="c":
                 pass
         elif action=="setspeed":
             if type(varible)=="int" or type(varible)=="float":

@@ -1,4 +1,4 @@
-import Robot_Control.Control
+import Robot_Control.Control as control
 command=""
 com_list=""
 varible=""
@@ -29,8 +29,8 @@ while True:
             else:
                 print("Error: Invalid Varible")
         elif action=="epconnect":
-            message=Control.connect(ssid,password)
-            print(message\)
+            message=control.connect(ssid,password)
+            print(message)
         else:
             print("Error: Unrecognised Command")
     elif len(com_list)==1:
